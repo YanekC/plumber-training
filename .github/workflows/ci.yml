@@ -9,9 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ACTIONS_STEP_DEBUG: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
 
       - uses: actions/setup-node@main
         with:
@@ -21,9 +20,6 @@ jobs:
         id: changed
         uses: tj-actions/changed-files@v45
 
-      - name: Install tooling
-        run: curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
       - name: Build
         run: |
           echo "Build de l'application"
@@ -31,4 +27,4 @@ jobs:
 
       - name: Log PR title
         if: github.event_name == 'pull_request'
-        run: echo "PR title = ${{ github.event.pull_request.title }}"
+        run: echo "PR title"
